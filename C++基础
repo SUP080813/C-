@@ -20,3 +20,20 @@ String:String(const char* str) {
   }
 }
 
+String:String(const String& another) {
+  m_data = new char[strlen(another.m_data) + 1];
+  strcpy(m_data, another.m_data);
+}
+
+String:String& operator=(const String& rhs) {
+  if(this == &rhs)
+    return *this;
+  delete[] m_data;
+  m_data = new char[strlen(rhs.m_data) + 1];
+  strcpy(m_data, rhs.m_data);
+  return *this;
+}
+
+String：~String() {
+  delete[] m_data;
+}
