@@ -40,6 +40,9 @@ String：~String() {
 
 二、排序算法：
 1、快排:
+步骤：1.先从数列中取出一个数作为基准数（第一个数）
+      2.分区：将比这个数大的数全放到右边，小于等于的数放到左边
+      3.对左右分区重复上述步骤，直至区间内只有一个数。
 void quickSort(int *array, int left, int right) {
   if(left < right) {
     int temp;
@@ -64,4 +67,37 @@ void quickSort(int *array, int left, int right) {
     quickSort(array, left, low - 1);
     quickSort(array, low + 1, right);
   }    
+}
+
+2、选择排序
+步骤：1.从待排序元素找出最小的元素存放在起始位置；
+      2.从剩余未排序元素中找到最小元素，置于已排序队尾
+      3.重复上述步骤，直至待排序元素为0。
+void selelctionSort(vector<int> &q) {
+  for(int i = 0; i < q.size(); i++) {
+    for(int j = i + 1； j < q.size(); j++) {
+      if(q[i] > q[j]) {
+        swap(q[i], q[j]);
+      }
+    }
+  }
+}
+
+3、插入排序
+步骤：1.从第一个元素开始认为已经排序；
+      2.取下一个元素，在已经排序的元素序列从后向前扫描；
+      3.已排序元素大于新元素，新元素移到下一个位置；
+      4.知道找到已排序的元素小于或等于新元素的位置；
+      5.新元素插入到该位置，重复上述步骤。
+void insertSort(vector<int> &q) {
+  for(int i = 1; i < q.size(); i++) {
+    int t = q[i];
+    for(int j = i - 1; j >=0; j--) {
+      if(q[j] > t)
+        q[j + 1] = q[j];
+      else
+        break;
+    }
+    q[j + 1] = t;
+  }
 }
