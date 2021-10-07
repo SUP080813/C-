@@ -1,0 +1,22 @@
+一、String类的具体实现：
+class String {
+public:
+  String(const char* str = NULL); //普通构造函数
+  String(const String &another); //拷贝构造
+  String& operator=(const String& rhs); //赋值函数
+  ~String(); //析构函数;
+private:
+  char* m_data; //成员函数
+}
+
+String:String(const char* str) {
+  if(str == NULL) {
+    m_data = new char[1];
+    m_data = '/0';
+  }
+  else {
+    m_data = new char[strlen(str) + 1]；
+    strcpy(m_data, str);
+  }
+}
+
