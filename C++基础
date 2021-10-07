@@ -161,3 +161,50 @@ void mergeSort(vector<int> &q, int l, int r) {
   for(int i : w)
     q[l++] = i;
 } 
+
+
+7、堆排序 
+void push_down(vector<int>& heap, int size, int u){
+    int t = u, left = u * 2, right = u * 2 + 1;
+    if(left <= size && heap[left] > heap[t])
+        t = left;
+    if(right <= size && heap[right] > heap[t])
+        t = right;
+    if(u != t){
+        swap(heap[u], heap[t]);
+        push_down(heap, size, t);
+    }
+}
+ 
+void push_up(vector<int>& heap, int u){
+    while(u / 2 && heap[u / 2] < heap[u]){
+        swap(heap[u / 2], heap[u]);
+        u /= 2;
+    }
+}
+
+void heapSort(vector<int> &q, int n){
+    int size = n;
+    for(int i = 1; i <= n; i++)
+        push_up(q, i);
+    for(int i = 1; i <= n; i++){
+        swap(q[1], q[size]);
+        size--;
+        push_down(q, size, 1);
+    }
+}
+
+
+8、计数排序 
+void countingSort(vector<int> &q, int n){
+    vector<int> cnt(101, 0);
+    for(int i = 0; i < n; i++)
+        cnt[q[i]]++;
+    for(int i = 0, k = 0; i <= 100; i++){
+        while(cnt[i]){
+            q[k++] = i;
+            cnt[i]--;
+        }
+    }
+}
+ 
