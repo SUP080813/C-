@@ -101,3 +101,21 @@ void insertSort(vector<int> &q) {
     q[j + 1] = t;
   }
 }
+
+4、冒泡排序
+步骤：1.比较相邻元素，若第二个数比第一个数大，交换；
+      2.重复上述操作，最后一个数是最大的数；
+      3.重复上述操作，除了最后一个数，直至没有元素需要比较。
+void bubbleSort(vector<int> &q) {
+  for(int i = q.size() -1; i > 0; i--) {
+    bool flag = false;
+    for(int j = 0; j + 1< = i; j++) {
+      if(q[j] > q[j + 1]) {
+      swap(q[j], q[j + 1]);
+      flag = true;
+      }
+    }
+    if(!flag)
+      break;
+  }
+}
