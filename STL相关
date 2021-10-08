@@ -35,10 +35,16 @@ STL:标准模板库（容器、算法、迭代器）
   底层实现时vector，heap为处理规则管理底层容器实现
   
 7.set/multiset
-  底层实现是红黑树，有序不可重复，multi可重复；
+  底层实现是红黑树，有序(默认升序)不可重复，multi可重复；
+  插入和删除仅仅需要指针操作节点即可，不涉及内存移动和拷贝；
+  也是以键值对的方式存在，只是键值与实值相同；
+  multiset插入删除的时间复杂度为O(logn)
   
 8.map/multimap
   底层实现是红黑树，有序不可重复，multi可重复；
+  基于key的快速检索能力，时间复杂度O(logn)；
+  元素插入按照顺序插入，不能指定位置插入可以改变value，但不能修改key
+  通过first,second访问pair的元素
   
 9.unordered_set/unordered_multiset
   底层实现是哈希表，无序不可重复，multi可重复；
