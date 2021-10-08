@@ -42,9 +42,10 @@ STL:标准模板库（容器、算法、迭代器）
   
 8.map/multimap
   底层实现是红黑树，有序不可重复，multi可重复；
-  基于key的快速检索能力，时间复杂度O(logn)；
+  基于key的快速检索能力，查询、插入、删除时间复杂度都是O(logn)；
   元素插入按照顺序插入，不能指定位置插入可以改变value，但不能修改key
   通过first,second访问pair的元素
+  
   
 9.unordered_set/unordered_multiset
   底层实现是哈希表，无序不可重复，multi可重复；
