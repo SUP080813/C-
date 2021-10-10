@@ -208,3 +208,48 @@ void countingSort(vector<int> &q, int n){
     }
 }
  
+三、单链表实现栈
+  struct node{
+    datatype val;
+    node *next;
+  };
+  class lstack {
+    public:
+      lstack();
+      ~lstack();
+      void push(datatype val);
+      void pop();
+      datatype top();
+      bool isEmpty();
+    private:
+      node *top
+  };
+  
+  lstack::lstack() {
+    top = NULL;
+  }
+  lstack::~lstack() {
+    node *ptr = NULL;
+    while(top != NULL) {
+      ptr = top->next;
+      delete top;
+      top = ptr;
+    }
+  }
+  lstack::void push(datatype val) {
+    node *ptr = new node;
+    ptr->val = a;
+    ptr->next = top;
+    top = ptr;
+  }
+  lstack::vpid pop() {
+    node *ptr = top->next;
+    delete top;
+    top = ptr;
+  }
+  lstack::datatype top() {
+    return top->val;
+  }
+  lstack::bool isEmpty() {
+    return top == NULL;
+  }
